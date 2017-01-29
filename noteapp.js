@@ -25,7 +25,7 @@
 	];
 	
 	$scope.loadSampleNotes = function () {
-		$scope.notes=$scope.notes.concat($scope.sampleNotes);
+		$scope.notes.push.apply($scope.notes, $scope.sampleNotes);
 		$scope.saveData();
 	};
 	
