@@ -1,0 +1,187 @@
+body, html {
+	padding:0;
+	margin:0;
+	font-family: 'Old Standard TT';
+	background-color:#FCF0AD;
+}
+
+.fa-times-circle {
+  color:black;
+}
+
+.top-menu {
+    width: 100%;
+	height:65px;
+    text-align: center;
+    background-color: #555;
+	color:white;
+}
+
+.top-menu a {
+	text-decoration: none;
+	color:white;	
+}
+
+#app-name {
+    color: #FFD700;
+}
+
+.menu-element {
+	padding: 12px;
+    float: left;
+    font-size: 32px;
+	text-align: left;
+}
+
+.menu-button{
+    padding: 12px;
+    float: left;
+    transition: all 0.15s ease;
+    font-size: 32px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.app-icon {
+	float:left;
+}
+
+.app-icon img {
+	height:57px;
+	display:block;
+	padding:4px;
+	margin:auto;
+}
+
+.top-menu a:hover {
+	box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+	transition: opacity 0.3s ease-in-out;
+}
+
+.fa-paint-brush {
+	margin-left:12px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    padding:12px 12px 12px 0px;
+    float: left;
+    transition: all 0.15s ease;
+    font-size: 32px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown:hover {
+		box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+		transition: opacity 0.3s ease-in-out;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+	margin-top:12px;
+    background-color: #f9f9f9;
+    min-width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    padding: 12px;
+    text-decoration: none;
+	text-align:center;
+    display: block;
+	transition: all 0.15s ease;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.yellow {
+	background-color:#FFFD75;
+}
+
+.orange {
+	background-color:#FBBA32;
+}
+
+.cyan {
+	background-color:#18C7DC;
+}
+
+.yellow div,  .orange div, .cyan div {
+	color:black;
+}
+
+.blue {
+	background-color:#2C7FA9;
+	color:white;
+}
+
+.black {
+	background-color:black;
+	color:white;
+}
+
+.blue textarea, .black textarea {
+	color:white;
+}
+
+.note {
+	float: left;
+	display: block;
+	position: relative;
+	padding: 0.5em;
+	width: 300px;
+	min-height: 300px;
+	margin: 30px 0 30px 30px;
+	box-shadow: 5px 5px 10px -2px rgba(33,33,33,.3);
+}	
+
+.fa-arrows:hover {
+	cursor: move;
+}
+
+.fa-times-circle:hover, .dropdown:hover{
+	cursor:pointer;
+}
+
+textarea {
+	font-family:inherit;
+	background-color: transparent;
+	border: none;
+	resize: vertical;
+}
+
+textarea:focus {
+	outline: none;
+	border: none;
+	box-shadow: 0 0 5px 1px rgba(0,0,0,.2)
+}
+
+.title {
+	font-size: 24px;
+	width:100%;
+}
+
+.title textarea {
+	float:left;
+	font-size:inherit;
+	font-weight:700;
+	text-align:center;
+	margin: 0 6px 0 4px;
+	width:240px;
+	height:auto;
+}
+
+.title i {
+	float: left;
+}
+
+.message {
+	padding:5px 5px 0 5px;
+	width: 290px;
+	min-height: 215px;
+	font-size:20px;
+}
