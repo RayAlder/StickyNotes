@@ -1,12 +1,8 @@
-body, html {
+body {
 	padding:0;
 	margin:0;
 	font-family: 'Old Standard TT';
 	background-color:#FCF0AD;
-}
-
-.fa-times-circle {
-  color:black;
 }
 
 .top-menu {
@@ -33,11 +29,12 @@ body, html {
 	text-align: left;
 }
 
-.menu-button{
-    padding: 12px;
+.menu-button, .dropdown{
+    height:48px;
+	padding: 17px 12px 0px 12px;
     float: left;
-    transition: all 0.15s ease;
-    font-size: 32px;
+    font-size: 28px;
+	transition: opacity 0.3s ease-in-out;
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
@@ -52,35 +49,36 @@ body, html {
 	margin:auto;
 }
 
-.top-menu a:hover {
-	box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-	transition: opacity 0.3s ease-in-out;
+.dropdown:hover .fa-caret-up:before {
+    content: "\f0d7";
 }
 
-.fa-paint-brush {
+.fa-arrows:hover {
+	cursor: move;
+}
+
+.fa-times-circle-o:hover, .dropdown:hover{
+	cursor:pointer;
+}
+
+#spacer {
 	margin-left:12px;
+}
+
+.top-menu a:hover, .dropdown:hover {
+	box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+	transition: opacity 0.3s ease-in-out;
 }
 
 .dropdown {
     position: relative;
-    display: inline-block;
-    padding:12px 12px 12px 0px;
-    float: left;
-    transition: all 0.15s ease;
-    font-size: 32px;
-	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
-
-.dropdown:hover {
-		box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-		transition: opacity 0.3s ease-in-out;
+    padding: 17px 12px 0px 0px;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
 	margin-top:12px;
-    background-color: #f9f9f9;
     min-width: 100%;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -110,48 +108,42 @@ body, html {
 	background-color:#18C7DC;
 }
 
-.yellow div,  .orange div, .cyan div {
+.yellow textarea, .orange textarea, .cyan textarea, .yellow .dropdown-text, .orange .dropdown-text, .cyan .dropdown-text {
+	color:#333333;
+}
+
+.yellow i, .orange i, .cyan i {
 	color:black;
 }
 
 .blue {
 	background-color:#2C7FA9;
-	color:white;
 }
 
 .black {
 	background-color:black;
-	color:white;
 }
 
-.blue textarea, .black textarea {
+.blue textarea, .black textarea, .blue, .black  {
 	color:white;
 }
 
 .note {
 	float: left;
 	display: block;
-	position: relative;
+	position: absolute;
 	padding: 0.5em;
 	width: 300px;
 	min-height: 300px;
-	margin: 30px 0 30px 30px;
 	box-shadow: 5px 5px 10px -2px rgba(33,33,33,.3);
 }	
-
-.fa-arrows:hover {
-	cursor: move;
-}
-
-.fa-times-circle:hover, .dropdown:hover{
-	cursor:pointer;
-}
 
 textarea {
 	font-family:inherit;
 	background-color: transparent;
 	border: none;
 	resize: vertical;
+	overflow: auto;
 }
 
 textarea:focus {
@@ -172,7 +164,6 @@ textarea:focus {
 	text-align:center;
 	margin: 0 6px 0 4px;
 	width:240px;
-	height:auto;
 }
 
 .title i {
@@ -184,4 +175,10 @@ textarea:focus {
 	width: 290px;
 	min-height: 215px;
 	font-size:20px;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { /* Make Internet explorer behave */
+   .menu-element {
+        padding-bottom:10px;
+   }
 }
