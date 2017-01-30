@@ -41,7 +41,9 @@
 			</div>
 		</div>
 		<div class="content" ng-click="setSelected()">
-			<div class="note" ng-repeat="note in notes" ng-class="note.color" ng-click="setSelected($index)" ng-draggable='dragOptions' ng-style="{'left': note.x, 'top': note.y}">
+			<button ng-click="loadSampleNotes()">Add Samples</button>
+			<p>{{getScreenWidth()}}</p>
+			<div class="note" ng-repeat="note in notes track by $index" ng-class="note.color" ng-click="setSelected($index)" ng-draggable='dragOptions' ng-style="{'left': note.x+'px', 'top': note.y+'px'}">
 				<div class="title" ng-click="setSelected($index)">
 					<i class="fa fa-arrows" class="" ng-click=""></i>
 					<textarea elastic placeholder="Title..." onfocus="this.placeholder=''" onblur="this.placeholder='Title...'" ng-model="note.title" ng-focus="setSelected($index)">

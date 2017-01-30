@@ -1,6 +1,6 @@
  var noteApp = angular.module("noteApp", ['ngStorage']);
  
- noteApp.controller("NoteController", function($scope, $localStorage){
+ noteApp.controller("NoteController", function($scope, $localStorage, $window){
 	 
 	$scope.saveData = function() {
 		$localStorage.notes=$scope.notes;
@@ -15,45 +15,74 @@
 		y:95
 	};
 	
-	$scope.increaseOffset= function () {
-	if ($scope.startPosition['x']>500||$scope.startPosition['y']>500) {
+	$scope.resetStartPosition= function(){
 		$scope.startPosition['x']=30;
 		$scope.startPosition['y']=95;
-	} else {
-		$scope.startPosition['x']+=40;
-		$scope.startPosition['y']+=40;
-	}
 	};
 	
+	$scope.increaseOffset= function () {
+		if ($scope.startPosition['x']>500||$scope.startPosition['y']>500) {
+			$scope.resetStartPosition();
+		} else {
+			$scope.startPosition['x']+=40;
+			$scope.startPosition['y']+=40;
+		}
+	};
+	
+	$scope.getFreePosition= function(){
+		var freeX=30;
+		var freeY=95;
+		if($scope.getNoteCount!=0){
+			var flag=false;
+			while(!flag){
+				flag=true;
+				
+				$scope.notes.forEach( function(note){
+					while(!((316+30+note.x)<freeX||(324+30+note.y)<freeY||(316+30+freeX)<note.x||(324+30+freeY)<note.y)){	
+						flag=false;						
+						if((freeX+316+30)<$scope.getScreenWidth()){
+							freeX+=10;
+						} else {
+							freeX=30;
+							freeY+=10
+						}
+					}		
+				});
+			}
+		}
+		
+		$scope.startPosition['x']=freeX;
+		$scope.startPosition['y']=freeY;
+		
+	};
+	
+	$scope.getScreenWidth = function() {
+		return $window.innerWidth;
+	}
+	
 	$scope.addNote = function() {
-	  $scope.notes.push({title:'', message:'', color:$scope.activeColor,x:$scope.startPosition['x']+'px',y:$scope.startPosition['y']+'px'});
-	  $scope.increaseOffset();
+	  $scope.getFreePosition();
+	  $scope.notes.push({title:'', message:'', color:$scope.activeColor,x:$scope.startPosition['x'],y:$scope.startPosition['y']});
 	  $scope.saveData();
 	};
 	
 	$scope.sampleNotes = [
-	  {title:'Do this!', message:'-Finish this app\n-Celebrate\n-Relax', color:'yellow', x:'100px', y:'100px'},
-	  {title:'Do something', message:'Eat a whole pizza', color:'orange', x:'200px', y:'200px'},
-	  {title:'Remember something', message:'Long text is looooooooooooooooooooooooooooooooooooooooooong', color:'cyan', x:'300px', y:'300px'},
-	  {title:'Brainstorm!', message:'*Think of something new\n*Try it', color:'blue', x:'400px', y:'400px'},
-	  {title:'GGroceries', message:'+Carrots \n+Tomatos \n+Potatoes', color:'black', x:'500px', y:'500px'}
+	  {title:'Do this!', message:'-Finish this app\n-Celebrate\n-Relax', color:'yellow', x:'100', y:'100'},
+	  {title:'Do something', message:'Eat a whole pizza', color:'orange', x:'200', y:'200'},
+	  {title:'Remember something', message:'Long text is looooooooooooooooooooooooooooooooooooooooooong', color:'cyan', x:'300', y:'300'},
+	  {title:'Brainstorm!', message:'*Think of something new\n*Try it', color:'blue', x:'400', y:'400'},
+	  {title:'GGroceries', message:'+Carrots \n+Tomatos \n+Potatoes', color:'black', x:'500', y:'500'}
 	];
 	
 	$scope.loadSampleNotes = function () {
 		$scope.notes=$scope.notes.concat($scope.sampleNotes);
 		$scope.saveData();
 	};
-	
-	if($localStorage.notes !== undefined && $localStorage.notes !== null) { 
-		$scope.notes = $localStorage.notes;
-	} else {
-		$scope.notes = [];
-		$scope.loadSampleNotes();
-	}
  
 	$scope.deleteAll = function() {
 		$scope.notes= [];
 		$scope.saveData();
+		$scope.resetStartPosition();
 	};
 	 
 	$scope.getNoteCount = function() {
@@ -85,6 +114,14 @@
 			$scope.notes[$scope.selected].color=color;
 		 }
 	 };
+	 
+	 if($localStorage.notes !== undefined && $localStorage.notes !== null) { 
+		$scope.notes = $localStorage.notes;
+	} else {
+		$scope.notes = [];
+		$scope.loadSampleNotes();
+	}
+	
  });
 noteApp.directive('elastic', [
     '$timeout',
