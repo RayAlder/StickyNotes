@@ -1,8 +1,9 @@
-body {
+html, body {
 	padding:0;
 	margin:0;
 	font-family: 'Old Standard TT';
 	background-color:#FCF0AD;
+	height:100%;
 }
 
 .top-menu {
@@ -20,17 +21,20 @@ body {
 
 #app-name {
     color: #FFD700;
+	padding-right:6px;
 }
 
 .menu-element {
+	min-width:254px;
 	padding: 12px;
-    float: left;
     font-size: 32px;
+	float: left;
 	text-align: left;
 }
 
 .menu-button, .dropdown{
     height:48px;
+	background-color: #555;
 	padding: 17px 12px 0px 12px;
     float: left;
     font-size: 28px;
@@ -94,6 +98,10 @@ body {
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+.content {
+	height:90%;
 }
 
 .yellow {
@@ -180,5 +188,8 @@ textarea:focus {
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { /* Make Internet explorer behave */
    .menu-element {
         padding-bottom:10px;
+   }
+   .dropdown-content {
+		margin-top:11px;
    }
 }
