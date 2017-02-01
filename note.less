@@ -1,0 +1,196 @@
+@background: #FCF0AD;
+@menuColor: #555;
+@yellow: #FFFD75;
+@orange: #FBBA32;
+@cyan: #18C7DC;
+@blue: #2C7FA9;
+@black: black;
+@darkFontColor: #333333;
+@lightFontColor: white;
+
+html, body {
+	padding:0;
+	margin:0;
+	font-family: 'Old Standard TT';
+	background-color:@background;
+	height:100%;
+}
+
+.top-menu {
+    width: 100%;
+	height:65px;
+    background-color: @menuColor;
+	color:@lightFontColor;
+}
+
+.app-info {
+	min-width:262px;
+	padding: 12px;
+    font-size: 32px;
+	float: left;
+	strong {
+		color: #FFD700;
+		padding-right:6px;
+	}
+}
+
+.app-icon {
+	float:left;
+	img	{
+		height:57px;
+		display:block;
+		padding:4px;
+		margin:auto;
+	}
+}
+
+.fa-arrows:hover {
+	cursor: move;
+}
+
+.fa-times-circle-o:hover, .dropdown:hover{
+	cursor: pointer;
+}
+
+#spacer {
+	margin-left:12px;
+}
+
+.top-menu a:hover, .dropdown:hover {
+	box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+}
+
+.menu-button, .dropdown{
+    height:48px;
+	background-color: @menuColor;
+	padding: 17px 12px 0px 12px;
+    float: left;
+    font-size: 28px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	text-decoration: none;
+	color:@lightFontColor;	
+}
+
+.dropdown {
+    position: relative;
+    padding: 17px 12px 0px 0px;
+	&:hover .dropdown-content {
+		display: block;
+	}
+	&:hover .fa-caret-up:before {
+		content: "\f0d7";
+	}
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	margin-top:12px;
+	min-width: 100%;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+	a {
+		padding: 12px;
+		text-decoration: none;
+		text-align:center;
+		display: block;
+	}
+}
+
+.content {
+	height:90%;
+}
+
+.yellow {
+	background-color:@yellow;
+}
+
+.orange {
+	background-color:@orange;
+}
+
+.cyan {
+	background-color:@cyan;
+}
+
+.yellow textarea, 
+.orange textarea, 
+.cyan textarea, 
+.yellow .dropdown-text, 
+.orange .dropdown-text, 
+.cyan .dropdown-text {
+	color:@darkFontColor;
+}
+
+.yellow i, 
+.orange i, 
+.cyan i {
+	color:black;
+}
+
+.blue {
+	background-color:@blue;
+}
+
+.black {
+	background-color:@black;
+}
+
+.blue textarea, 
+.black textarea, 
+.blue, 
+.black  {
+	color:@lightFontColor;
+}
+
+.note {
+	float: left;
+	display: block;
+	position: absolute;
+	padding: 0.5em;
+	width: 300px;
+	min-height: 300px;
+	box-shadow: 5px 5px 10px -2px rgba(33,33,33,.3);
+	i {
+		float: left;
+	}
+	textarea {
+		font-family:inherit;
+		background-color: transparent;
+		border: none;
+		resize: vertical;
+		overflow: auto;
+		&:focus {
+			outline: none;
+			border: none;
+			box-shadow: 0 0 5px 1px rgba(0,0,0,.2);
+		}
+	}
+}
+.title {
+	font-size: 24px;
+	width:100%;
+	textarea {
+		float:left;
+		font-size:inherit;
+		font-weight:700;
+		text-align:center;
+		margin: 0 6px 0 4px;
+		width:240px;
+	}	
+}
+.message {
+	padding:5px 5px 0 5px;
+	width: 290px;
+	min-height: 215px;
+	font-size:20px;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { /* Make Internet explorer behave */
+   .app-info {
+        padding-bottom:10px;
+   }
+   .dropdown-content {
+		margin-top:11px;
+   }
+}
