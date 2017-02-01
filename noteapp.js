@@ -53,15 +53,18 @@
 	};
 	
 	$scope.sampleNotes = [
-		{title:'Do this!', message:'-Finish this app\n-Celebrate\n-Relax', color:'yellow', x:50, y:100},
-		{title:'Do something', message:'Eat a whole pizza', color:'orange', x:400, y:100},
-		{title:'Remember something', message:'Long text is looooooooooooooooooooooooooooooooooooooooooong', color:'cyan', x:750, y:100},
-		{title:'Brainstorm!', message:'*Think of something new\n*Try it', color:'blue', x:200, y:450},
-		{title:'Groceries', message:'+Carrots \n+Tomatos \n+Potatoes', color:'black', x:550, y:450}
+		{title:'Do this!', message:'-Finish this app\n-Celebrate\n-Relax', color:'yellow'},
+		{title:'Do something', message:'Eat a whole pizza', color:'orange'},
+		{title:'Remember something', message:'Long text is looooooooooooooooooooooooooooooooooooooooooong', color:'cyan'},
+		{title:'Brainstorm!', message:'*Think of something new\n*Try it', color:'blue'},
+		{title:'Groceries', message:'+Carrots \n+Tomatos \n+Potatoes', color:'black'}
 	];
 	
 	$scope.loadSampleNotes = function () {
-		$scope.notes=$scope.notes.concat($scope.sampleNotes);
+		$scope.sampleNotes.forEach( function (note) {
+			$scope.getFreePosition();
+			$scope.notes.push({title:note.title, message:note.message, color:note.color,x:$scope.startPosition['x'],y:$scope.startPosition['y']});
+		})
 		$scope.saveData();
 	};
  
